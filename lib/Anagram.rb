@@ -1,13 +1,16 @@
 def anagram(s)
   return -1 if s.size.odd?
-
-  str_a = s[0...s.size / 2]
-  str_b = s[s.size / 2..-1]
-  h_a = Hash.new(0)
-  h_b = Hash.new(0)
-  str_a.each_char { |char| h_a[char] += 1 }
-  str_b.each_char { |char| h_b[char] += 1 }
-  return 0 if h_a == h_b
+  str_a = s[0...s.size / 2].split('')
+  str_b = s[s.size / 2..-1].split('')
+  str_a.each do |char_a|
+    str_b.each_with_index do |char_b,indx|
+      if char_a == char_b
+        str_b.delete_at(indx)
+        break
+      end
+    end
+  end
+  str_b.size
 end
 
 # p anagram('aaabbb') #=> 3
