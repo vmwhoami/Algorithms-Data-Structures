@@ -13,19 +13,13 @@ def anagram(s)
   str_b.size
 end
 
-# p anagram('aaabbb') #=> 3
-# p anagram("ab") #=>1
-# p anagram('abc') #=>-1
-# p anagram('mnop') #=>2
-# p anagram('xyyx') #=>0
-# p anagram('xaxbbbxx') #=>1
+p anagram('aaabbb') #=> 3
+p anagram("ab") #=>1
+p anagram('abc') #=>-1
+p anagram('mnop') #=>2
+p anagram('xyyx') #=>0
+p anagram('xaxbbbxx') #=>1
 
 # p anagram('asdfjoieufoa') #=>3
-p anagram('fdhlvosfpafhalll') #=>5
+# p anagram('fdhlvosfpafhalll') #=>5
 # p anagram('mvdalvkiopaufl') #=>5
-
-# ["f", "d", "h", "l", "v", "o", "s", "f"]
-
-# ["p", "a", "f", "h", "a", "l", "l", "l"]
-
-# ["d", "v", "o", "s"]
