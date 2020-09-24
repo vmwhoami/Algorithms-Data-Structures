@@ -37,7 +37,7 @@ class LinkedList
   
   def get_node(index)
     noder = @head
-    (index-1).times do
+    index.times do
       raise "The list is not long enough" if noder.nil?
       noder  = noder.next_node
     end
@@ -49,31 +49,51 @@ class LinkedList
     if @head.nil?
       @head = new_node
       return @head
-    elsif index == 0
+    elsif index.zero?
       temp_var = @head
       @head = new_node
       @head.next_node = temp_var
     else
-      before= get_node(index-1)
-      former_node = before.next_node
+      before = get_node(index-1)
+      ex_node = before.next_node
       before.next_node = new_node
       new_node = before.next_node
-      new_node.next_node = former_node
-
+      new_node.next_node = ex_node
     end
-    
   end
 
- end
+  def remove(index)
+    deleted = get_node(index)
+    if index.zero?
+      @head = deleted.next_node
+    elsif deleted.next_node.nil?
+      prev = get_node(index-1)
+      prev.next_node = nil
+    else
+      prev = get_node(index-1)
+      nex = deleted.next_node
+      prev.next_node = nex
+    end
+  end
+
+end
 
 list = LinkedList.new
 
-list.add(3)
-list.add(5)
- list.add_at(1, 11)
-list.add_at(0, 13)
+list.add(8) 
+list.add(3) 
+list.add_at(1, 5) 
+list.add_at(2, 4) 
+# 8 5  4 3 
 
-puts list.get(2)
+list.remove(1)
+
+p list.get(0)
+p list.get(1)
+p list.get(2)
+# p list.get(3)
+# p list.get()
+# [8, 4, 3]
 # => 11
 # 13 3 11 5
 # puts list.get(3)
