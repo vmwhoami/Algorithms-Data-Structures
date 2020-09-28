@@ -5,12 +5,6 @@ def even_fib_sum(num)
 
   loop do
     fib = fb1 + fb2
-    if fib >= num
-      return 
-    end
-
+    return if fib >= num
   end
-
-
-
 end
