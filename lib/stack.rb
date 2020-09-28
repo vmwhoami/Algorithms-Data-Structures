@@ -77,21 +77,10 @@ class LinkedList
     end
   end
 
-  def tail?
-    noder = @head
-    if @head != nil
-      while noder.next_node != nil 
-      noder = noder.next_node  
-      end
-      @tail = noder
-    end
-    @tail
-  end
-
 end
 
 class Stack
-  attr_accessor :linked_l
+  # attr_accessor :linked_l
   def   initialize 
     @linked_l =  LinkedList.new
   end
@@ -102,8 +91,17 @@ class Stack
   end
   
   def pop
-   popped_val =  @linked_l.tail?.value
-   
+  last = @linked_l.head
+  indx = 0
+  if last != nil
+   while last.next_node != nil
+    indx+=1
+    last = last.next_node
+   end
+  end
+  val = last.value
+  @linked_l.remove(indx)
+  val
   end
 end
 
@@ -111,18 +109,16 @@ end
 stack = Stack.new
 stack.push(3)
 stack.push(5)
-
-# puts stack.pop
+puts stack.pop
 # => 5
 
-# stack.push(2)
-p stack.pop
-# stack.push(7)
-# puts stack.pop
-# # => 7
+stack.push(2)
+stack.push(7)
+puts stack.pop
+# => 7
 
-# puts stack.pop
-# # => 2
+puts stack.pop
+# => 2
 
-# puts stack.pop
+puts stack.pop
 # => 3
