@@ -8,13 +8,35 @@ end
 
 
 class Queue
- 
+ def initialize 
+   @head = nil
+ end
+
   def add(number)
- 
+    node = Node.new(number)
+    if @head.nil?
+      @head = node
+    else
+      head = @head
+      while head.next_node != nil
+        head = head.next_node
+      end
+      head.next_node = node
+    end
   end
 
   def remove
- 
+    if @head.nil?
+      return -1
+    elsif @head.next_node.nil?
+      val = @head.value
+      @head = nil
+      return val
+    else
+      val = @head.value
+      @head = @head.next_node
+      return val
+    end
   end
 end
 
