@@ -6,34 +6,71 @@ class Node
 end
 
 class Stack
-  # insert an element into the stack
-  def push(number)
-    new_node = Node.new(number)
-    if @top.nil?
-      @top = new_node
-    else
-      new_node.next_node = @top
-      @top = new_node
+ def initialize
+  @head = nil
+  @tail = nil
+  @array = []
+ end
+ def push(number)
+  @array << number
+  new_node =  Node.new(number)
+  if @head.nil?
+    @head = new_node
+    @tail = @head
+  else
+    head = @head
+    while head.next_node != nil
+      head = head.next_node
     end
+      head.next_node = new_node
+      @tail = head.next_node
   end
-  # removes an element from the stack, then returns the removed node
-  def pop
-    return if @top.nil?
-    
-    removed_node = @top
-    @top = @top.next_node
-    removed_node
-  end
+end
 
-  def empty?
-    @top.nil?
+def pop
+  @array.pop
+  if @head.nil?
+    return "There are no more elements in the stack"
+  else
+      if @head.next_node.nil?
+      val = @head.value
+      @tail = nil
+      @head = @tail
+      return val
+    end
+    tail = @tail.value
+    head = @head
+    
+    while head.next_node != @tail
+      head = head.next_node
+    end
+    @tail = head
+    head.next_node = nil
+    tail
+  end
+end
+  
+  def min
+   @array.min
   end
 end
 
 stack = Stack.new
- stack.push(2)
- stack.push(3)
- stack.push(4)
+stack.push(3)
 
- p  stack.empty?
- 
+stack.push(5)
+puts stack.min
+# # => 3
+
+stack.pop
+stack.push(7)
+puts stack.min
+# # => 3
+
+stack.push(2)
+puts stack.min
+# # => 2
+
+stack.pop
+puts stack.min
+# => 3
