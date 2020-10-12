@@ -1,39 +1,41 @@
 def balanced_brackets?(string)
  stack = []
- brackets =  separate_brackets(string)
- brackets.each do |char|
-  if ['(','[','{'].include?(char)
-    stack.push(char)
-  else 
-    return -1 if stack.empty?
-      top = stack.pop
-     if (top == '(' && char != ')')||
-      (top == '[' && char != ']')||
-      (top == '{' && char != '}')
-      return -1
-     end
+ # strip only the brakets
+brackets = brackets(string)
+return true if brackets.empty?
+brackets.each do |ch|
+  if ['(','[','{'].include?(ch)
+    stack << ch
+  else
+    #? return false if stack.empty?
+    top = stack.pop
+    if (top == '(' && ch != ')')||
+      (top == '[' && ch != ']')||
+      (top == '{' && ch != '}')
+      return false
+    end
   end
- end
- stack.empty?
+end
+stack.empty?
 end
 
-def separate_brackets(s)
- brackets = ['(',')','[',']','{','}']
- b = []
-  s.each_char{|c| b << c if brackets.include?(c) }
-  b
+def brackets(s)
+  b = ['(',')','[',']','{','}']
+  a = []
+  s.each_char{|c| a << c if b.include?(c) }
+  a
 end
 
 
-
-# p  balanced_brackets?('(')
+# p  balanced_brackets?('Hello world')
  
-p  balanced_brackets?('(hello)[world]')
+
+# p  balanced_brackets?('(hello)[world]')
 # # => true
 
 # p balanced_brackets?('([)]')
 # => false
 
-# p balanced_brackets?('[({}{}{})([])]')
-# p balanced_brackets?('(')
+# p balanced_brackets?('[({}{}{})([)]')
+p balanced_brackets?('(')
 # => true
