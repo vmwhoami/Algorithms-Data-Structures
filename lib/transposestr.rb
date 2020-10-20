@@ -1,7 +1,7 @@
 def transpose(string)
 str = []
 que = []
-  string.each_char.with_index do |char,indx| 
+  string.each_char  do |char,indx| 
     if char == "g" 
     que.push(char)  
     elsif char == "n" 
