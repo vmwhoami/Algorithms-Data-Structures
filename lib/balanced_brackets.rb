@@ -7,7 +7,7 @@ brackets.each do |ch|
   if ['(','[','{'].include?(ch)
     stack << ch
   else
-    #? return false if stack.empty?
+    # ? return false if stack.empty?
     top = stack.pop
     if (top == '(' && ch != ')')||
       (top == '[' && ch != ']')||

@@ -9,10 +9,8 @@ class Stack
  def initialize
   @head = nil
   @tail = nil
-  @array = []
  end
  def push(number)
-  @array << number
   new_node =  Node.new(number)
   if @head.nil?
     @head = new_node
@@ -28,7 +26,7 @@ class Stack
 end
 
 def pop
-  @array.pop
+
   if @head.nil?
     return "There are no more elements in the stack"
   else
@@ -51,12 +49,27 @@ def pop
 end
   
   def min
-   @array.min
+    if @head.nil?
+      return "There are no elements in the stack"
+    elsif @head.next_node.nil?
+      return @head.value
+    else
+      looper = @head
+      @min = @head.value
+      while looper.next_node != nil
+        
+        @min = looper.value if looper.value < @min
+        @min = looper.next_node.value if looper.next_node.value < @min
+        looper = looper.next_node  
+      end
+   
+    end
+    @min
   end
 end
 
 stack = Stack.new
-stack.push(3)
+stack.push(1)
 
 stack.push(5)
 puts stack.min
