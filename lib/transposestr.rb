@@ -1,22 +1,23 @@
 def transpose(string)
-str = []
-que = []
-  string.each_char  do |char,indx| 
-    if char == "g" 
-    que.push(char)  
-    elsif char == "n" 
-        que.unshift(char) 
+q = []
+s = []
+  string.each_char do |char|
+    if char == "g"
+      q.push(char) 
+    elsif char == "n"
+      q.unshift(char)
     else
-    str << que
-     str << char
-     que = []
+      s << q
+      s << char
+      q = []
     end
   end
-  str<<que
-  str.flatten.join
+  
+  s << q
+  s.flatten.join
 end
 
-p transpose('he was searchign on Bign for signign kigns')
+p transpose('he was searchign on sign for signign kigns')
 # => he was searching on Bing for singing kings
 
 # p transpose('rignadingdiggn!')
