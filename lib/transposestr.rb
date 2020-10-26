@@ -1,10 +1,11 @@
 def transpose(string)
-q = []
-s = []
+  q = []
+  s = []
   string.each_char do |char|
-    if char == "g"
-      q.push(char) 
-    elsif char == "n"
+    case char
+    when 'g'
+      q.push(char)
+    when 'n'
       q.unshift(char)
     else
       s << q
@@ -12,7 +13,7 @@ s = []
       q = []
     end
   end
-  
+
   s << q
   s.flatten.join
 end
