@@ -46,37 +46,32 @@ class Stack
   end
 
   def min
-    if @head.nil?
-      return 'There are no elements in the stack'
-    elsif @head.next_node.nil?
-      return @head.value
-    else
-      looper = @head
-      @min = @head.value
-      until looper.next_node.nil?
-
-        @min = looper.value if looper.value < @min
-        @min = looper.next_node.value if looper.next_node.value < @min
-        looper = looper.next_node
-      end
-
-    end
-
-    @min
+   header = @head
+   @min = header.value  
+   if header.next_node.nil?
+    return @min
+   else
+     until header.next_node.nil?
+      header = header.next_node
+      @min = header.value if header.value < @min
+     end
+     @min
+   end
+   
   end
 end
 
+ 
 stack = Stack.new
-stack.push(1)
 
 stack.push(5)
 puts stack.min
-# # => 3
+# # # => 3
 
 stack.pop
 stack.push(7)
 puts stack.min
-# # => 3
+# # # => 3
 
 stack.push(2)
 puts stack.min
