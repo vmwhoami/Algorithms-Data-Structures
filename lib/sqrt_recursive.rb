@@ -1,54 +1,27 @@
-# The method sqrt takes in one square number.
-
-# Fill the method sqrt_recursive that returns the square root of a given number.
-# Do not use any built in methods for calculating the square-root and don't try searching
-#  through all the numbers.
-#  Instead, use a binary-style search to home in on the actual square root.
-# (To make it simpler, the input will just contain square numbers.)
-
 def sqrt(number)
-  n = number
-  while n * n != number
-    n -= 1
-    return 'No square' if n.negative?
-  end
-  n
+  sqrt_recursive(number, 0, number)
 end
 
-# def sqrt_recursive(number, min_interval, max_interval)
+def sqrt_recursive(number, min_interval, max_interval)
 
-#   if (min_interval <= max_interval)
-#     mid = (min_interval + max_interval) % 2
-#   end
+   arr  = (min_interval..max_interval).to_a
+   middle_index = arr.size/2
+   middle_value = arr[middle_index]
+   answer = middle_value * middle_value
+   return middle_value if answer == number
+ 
+   if answer  > number
+    sqrt_recursive(number, min_interval , arr[middle_index-1]) 
+   else
+    sqrt_recursive(number, arr[middle_index + 1], arr[-1])
+   end
+end
 
-# end
 
-puts sqrt(25)
-# => 5
 
+
+# puts sqrt(25)
+puts sqrt(225)
+puts sqrt(841)
+puts sqrt(1024)
 puts sqrt(7056)
-# => 84
-
-# Function to find the square
-# root of the number N using BS
-# def sqrtSearch(low, high, N) :
-
-# 	# If the range is still valid
-# 	if (low <= high) :
-
-# 		# Find the mid-value of the range
-# 		mid = (low + high) // 2;
-
-# 		# Base Case
-# 		if ((mid * mid <= N) and ((mid + 1) * (mid + 1) > N)) :
-# 			return mid;
-
-# 		# Condition to check if the
-# 		# left search space is useless
-# 		elif (mid * mid < N) :
-# 			return sqrtSearch(mid + 1, high, N);
-
-# 		else :
-# 			return sqrtSearch(low, mid - 1, N);
-
-# 	return low;
