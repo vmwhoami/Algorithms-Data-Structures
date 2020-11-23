@@ -46,22 +46,20 @@ class Stack
   end
 
   def min
-   header = @head
-   @min = header.value  
-   if header.next_node.nil?
-    return @min
-   else
-     until header.next_node.nil?
-      header = header.next_node
-      @min = header.value if header.value < @min
-     end
-     @min
-   end
-   
+    header = @head
+    @min = header.value
+    if header.next_node.nil?
+      @min
+    else
+      until header.next_node.nil?
+        header = header.next_node
+        @min = header.value if header.value < @min
+      end
+      @min
+    end
   end
 end
 
- 
 stack = Stack.new
 
 stack.push(5)

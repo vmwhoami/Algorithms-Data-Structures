@@ -2,10 +2,9 @@ def transpose(string)
   q = []
   s = []
   string.each_char do |char|
-    case char
-    when 'g'
+    if char == 'g'
       q.push(char)
-    when 'n'
+    elsif char == 'n'
       q.unshift(char)
     else
       s << q
