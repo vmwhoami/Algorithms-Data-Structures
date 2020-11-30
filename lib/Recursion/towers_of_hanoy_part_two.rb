@@ -1,20 +1,18 @@
 def hanoi_steps(number_of_discs)
-  the_mover(number_of_discs,1,2,3)
+    hanoi_mover(number_of_discs, 1, 2, 3)
 end
 
-def the_mover(num,s,m,g)
+def hanoi_mover(num,s,m,e)
   if num == 1
-    puts peg_mover(s, g)
-    return
+  puts  text_mover(s,e)
+   return 
   end
-  the_mover(num-1,s,g,m)
-  puts peg_mover(s, g)
-  the_mover(num-1,m,s,g)
-
+  hanoi_mover(num-1,s,e ,m)
+  puts text_mover(s,e)
+  hanoi_mover(num-1,m,s,e)
 end
 
-
-def peg_mover(starting, ending)
+def text_mover(starting,ending)
   "#{starting}->#{ending}"
 end
 
