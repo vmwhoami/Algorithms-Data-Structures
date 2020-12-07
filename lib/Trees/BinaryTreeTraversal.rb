@@ -18,9 +18,7 @@ def array_to_tree(array, i)
 end
 
 def pre_order(node)
-  if node == nil
-    return ''
-  end
+  return '' if node.nil?
 
   result = "#{node.data} "
   result += pre_order(node.left)
@@ -28,7 +26,12 @@ def pre_order(node)
 end
 
 def post_order(node)
-  # your code here
+  return '' if node.nil?  
+ 
+  result = post_order(node.left)
+  result += post_order(node.right)
+  result += "#{node.data} "
+
 end
 
 tree = array_to_tree([10, 1, 2, 3, 4, 5, 6], 0)
