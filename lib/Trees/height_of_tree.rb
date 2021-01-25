@@ -4,7 +4,7 @@ def binary_tree_height(array_tree)
   tree_counter = 2
   height_counter = 1
   until array_tree.empty?
-    arr << array_tree.pop(tree_counter)
+     array_tree.pop(tree_counter)
      tree_counter*=2
      height_counter+=1
   end
