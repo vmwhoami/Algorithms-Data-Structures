@@ -5,13 +5,12 @@ def tree_height(tree_as_list)
   until tree_as_list.empty?
     tree_as_list.pop(popped_value)
     popped_value *= 2
-    height+=1
+    height += 1
   end
- height
+  height
 end
 
-
-  # tree_height([2, 7, 5, 2, 6, 0, 9])
+# tree_height([2, 7, 5, 2, 6, 0, 9])
 # => 3
 
 # puts tree_height([1, 7, 5, 2, 6, 0, 9, 3, 7, 5, 11, 0, 0, 4, 0])

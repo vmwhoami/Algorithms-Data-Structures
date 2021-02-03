@@ -8,20 +8,33 @@ class Node
 end
 
 class BST
-  def insert(node)
-   the_node = Node.new(node)
-    p the_node
+  def insert(new_node)
+    if @root.nil?
+      @root = new_node
+    else
+      current = @root
+      loop do
+        if new_node.data <= current.data
+          return current.left = new_node if current.left.nil?
+
+          current = current.left
+        elsif new_node.data > current.data
+          return current.right = new_node if current.right.nil?
+
+          current = current.right
+        end
+      end
+    end
   end
 
   def pre_order(node = @root)
-    return "" if @root.nil?
-    result = "#{node.data}"
-    result +=  pre_order(node.left)
-    result += pre_order(node.right)
+    return '' if @root.nil?
 
+    result = node.data.to_s
+    result += pre_order(node.left)
+    result += pre_order(node.right)
   end
 end
-
 
 def binary_search_tree(array)
   tree = BST.new
@@ -29,6 +42,6 @@ def binary_search_tree(array)
   tree.pre_order
 end
 
- binary_search_tree([8, 3, 10, 1, 6, 14, 4, 7, 13])
+binary_search_tree([8, 3, 10, 1, 6, 14, 4, 7, 13])
 # => "8 3 1 6 4 7 10 14 13"
-p binary_search_tree.insert(7)
+# p binary_search_tree.insert(7)

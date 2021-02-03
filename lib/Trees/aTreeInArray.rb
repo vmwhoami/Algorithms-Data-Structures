@@ -1,13 +1,12 @@
 def leftmost_nodes_sum(array)
- result = 0
- i = 0 
- until i >= array.size 
-  result+=array[i]
-  i = 2*i+1
- end 
- result
+  result = 0
+  i = 0
+  until i >= array.size
+    result += array[i]
+    i = 2 * i + 1
+  end
+  result
 end
-
 
 p tree_height([5, 3, 4, 11, 13, 15, 21, 10, 4, 7, 2, 8, 0, 9, 0])
 # puts leftmost_nodes_sum([2, 7, 5, 2, 6, 0, 9])

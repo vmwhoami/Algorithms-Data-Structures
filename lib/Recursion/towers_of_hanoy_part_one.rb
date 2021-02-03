@@ -1,8 +1,8 @@
 def move(starting, goal)
   intermediate = ([1, 2, 3] - [starting, goal]).first
-  result = peg_mover(starting, intermediate) + ' '
-  result += peg_mover(starting, goal) + ' '
-  result += peg_mover(intermediate, goal) + ' '
+  result = "#{peg_mover(starting, intermediate)} "
+  result += "#{peg_mover(starting, goal)} "
+  result += "#{peg_mover(intermediate, goal)} "
   result
 end
 

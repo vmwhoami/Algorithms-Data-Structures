@@ -1,5 +1,4 @@
 def binary_tree_height(array_tree)
-
   array_tree.pop
   remove_node = 2
   height = 1
@@ -11,7 +10,6 @@ def binary_tree_height(array_tree)
     remove_node *= 2
   end
   height
-  
 end
 
 puts binary_tree_height([2, 7, 5, 2, 6, 0, 9])
