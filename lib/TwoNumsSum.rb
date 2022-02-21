@@ -2,10 +2,14 @@
 # return first two numbers that return the target
 def TwoNumsSum(arr,target)
   h = {}
-  arr.each do |index,num|
-
+  arr.each_with_index do |num,index|
+    return [target-num,num] if h[num]
+       
+    res = target - num
+    h[res] = true
   end
+ 
 end
 
-p TwoNumsSum([1,2,3,4,5,6,7,8,9,10],15)
+p TwoNumsSum([3, 5, -4, 8, 11, 1, -1, 6],10) #=> [11, -1] 
 
