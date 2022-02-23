@@ -6,15 +6,14 @@ def binary_search(arr, target)
 
   return arr[pointer] if arr[pointer] == target
 
-  if arr[pointer] > target
-    binary_search(arr[0...pointer], target)
-  else
-    binary_search(arr[(pointer + 1)...arr.size], target)
-  end
+  return binary_search(arr[0...pointer], target) if arr[pointer] > target
+
+  return binary_search(arr[(pointer + 1)...arr.size], target) if arr[pointer] < target
 end
 
 p binary_search([0, 1, 21, 33, 45, 45, 61, 71, 72, 73], 33) #=> 33
 p binary_search([0, 1, 21, 33, 45, 45, 61, 71, 72, 73], 72) #=> 72
+p binary_search([0, 1, 21, 33, 45, 45, 61, 71, 72, 73], 73) #=> 73
 p binary_search([0, 1, 21, 33, 45, 45, 61, 71, 72, 73], -1) #=> -1
 p binary_search([0, 1, 21, 33, 45, 45, 61, 71, 72, 73], 100) #=> -1
 p binary_search([0, 1, 21, 33, 45, 45, 61, 71, 72, 73], 0) #=> 0
