@@ -1,23 +1,24 @@
+require 'ostruct'
 class Node
-  attr_accessor :value, :head, :tail, :next_node
+  attr_accessor :value, :nex, :prev
 
-  def initialize(head: nil,tail: nil,value: nil,next_node: nil)
-    @head = nil
-    @tail = nil
+  def initialize(value: nil,next: nil, prev: nil)
     @value = nil
-    @next_node = nil
+    @next = nil
+    @prev = nil
   end
 end
-
 class LinkedList
   attr_accessor :node
-  def initialize(node:)
+
+  def initialize(node: nil, head: nil,tail: nil)
+    @head = nil
+    @tail = nil
     @node = node
-    add_node
   end
 
   def set_head
-   self.node.head = self.node if self.node.head.nil?
+    
   end
 
   def remove_nodes_with(value)
@@ -26,8 +27,6 @@ class LinkedList
   def insert_node_at(position)
   end
 
-  
-
   def set_tail
   end
   
@@ -35,7 +34,7 @@ class LinkedList
   end
 
   def remove_node
-
+  end
 
   def add_node
     self.set_head if self.node.head.nil?
@@ -43,6 +42,11 @@ class LinkedList
 
 end
 
+obj = OpenStruct.new
 
-list = LinkedList.new(node: Node.new(value: "the value"))
- p list
+obj.name = 'Vitalie'
+obj.surname = 'Melnic'
+obj.subobject = {age: 36, sex: "male",married: true} 
+
+linked_list = LinkedList.new(node: Node.new(obj))
+p linked_list
